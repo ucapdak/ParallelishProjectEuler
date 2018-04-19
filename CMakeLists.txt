@@ -19,13 +19,16 @@ IF(USE_OpenMP)
     ENDIF()
 ENDIF()
 
+# Use MPI
+find_package(MPI)
+include_directories(SYSTEM ${MPI_INCLUDE_PATH})
+
 # The following folders will be included
 include_directories("${PROJECT_SOURCE_DIR}")
 include_directories("${PROJECT_SOURCE_DIR}/src")
-
-find_package(MPI)
-include_directories(SYSTEM ${MPI_INCLUDE_PATH})
+include_directories("${PROJECT_SOURCE_DIR}/Testing")
 
 # Add source subdirectory
 add_subdirectory(src)
 
+enable_testing()

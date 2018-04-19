@@ -24,5 +24,6 @@ int main(int argc, char ** argv)
             std::cout << "Fib completed in " << duration << " seconds." << std::endl;
         }
     }
+
     return 1;
 }
