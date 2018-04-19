@@ -4,7 +4,7 @@ int main(int argc, char ** argv)
 {
     omp_set_dynamic(1);
     
-    const int num = 35;
+    const int num = 20;
     int a;
 
     double duration;
