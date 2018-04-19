@@ -23,6 +23,9 @@ ENDIF()
 include_directories("${PROJECT_SOURCE_DIR}")
 include_directories("${PROJECT_SOURCE_DIR}/src")
 
+find_package(MPI)
+include_directories(SYSTEM ${MPI_INCLUDE_PATH})
+
 # Add source subdirectory
 add_subdirectory(src)
 
