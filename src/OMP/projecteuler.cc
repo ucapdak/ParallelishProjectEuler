@@ -43,3 +43,24 @@ int ProblemTwo()
 
     return evenFib;
 }
+int ProblemThree()
+{
+    long largeNumber = 600851475143;
+    long upperBound = (long) std::sqrt(largeNumber);
+    long largestFactor = 0;
+
+    std::vector<int> sieve(upperBound, 1);
+
+#pragma omp parallel
+#pragma omp for 
+    for (long i = 2; i < upperBound; i++)
+        if (sieve[i])
+            for (long j = i + i; j < upperBound; j += i)
+                sieve[j] = 0;
+
+    for (largestFactor = upperBound; largestFactor > 0; largestFactor--)
+        if (sieve[largestFactor] && largeNumber % largestFactor == 0)
+            break;
+
+    return largestFactor;
+}
