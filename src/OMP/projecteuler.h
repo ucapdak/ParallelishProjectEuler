@@ -3,3 +3,4 @@
 #include <ctime>
 
 int ProblemOne();
+int ProblemTwo();

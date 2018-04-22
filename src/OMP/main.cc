@@ -2,7 +2,8 @@
 
 int main(int argc, char ** argv)
 {
-    int ansOne = ProblemOne();
-    std::cout << "Problem One: " << ansOne << std::endl;
+    std::cout << "Problem One: " << ProblemOne() << std::endl;
+    std::cout << "Problem Two: " << ProblemTwo() << std::endl;
+
     return 1;
 }

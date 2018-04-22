@@ -22,3 +22,24 @@ int ProblemOne()
 
     return globalSum;
 }
+int ProblemTwo()
+{
+    int evenFib = 2;
+
+    int fib1 = 1;
+    int fib2 = 2;
+    int temp = 0;
+
+    while (fib2 < 4000000)
+    {
+        temp = fib2;
+        fib2 += fib1;
+
+        if (fib2 % 2 == 0)
+            evenFib += fib2;
+
+        fib1 = temp;
+    }
+
+    return evenFib;
+}
