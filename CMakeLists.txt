@@ -31,4 +31,3 @@ include_directories("${PROJECT_SOURCE_DIR}/Testing")
 # Add source subdirectory
 add_subdirectory(src)
 
-enable_testing()

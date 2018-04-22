@@ -1,5 +1,5 @@
-add_executable(parallelfib
-    fib.h
-    fib.cc
+add_executable(OMPProjectEuler
+    projecteuler.h
+    projecteuler.cc
     main.cc
 )
