@@ -1,5 +1,18 @@
 #include "projecteuler.h"
 
+int ReverseNumber(int n)
+{
+    std::ostringstream convert;
+    convert << n;
+    std::string str = convert.str();
+    std::reverse(str.begin(),str.end());
+
+    std::istringstream buffer(str);
+    int reversed;
+    buffer >> reversed;
+
+    return reversed;
+}
 int ProblemOne()
 {
     int globalSum = 0;
@@ -63,4 +76,29 @@ int ProblemThree()
             break;
 
     return largestFactor;
+}
+int ProblemFour()
+{
+    int product = 0;
+    int greatestProduct = 0;
+
+#pragma omp parallel
+#pragma omp for 
+    for (int i = 100; i < 1000; i++)
+    {
+        for (int j = i; j < 1000; j++)
+        {
+            product = i * j;
+
+            if (product == ReverseNumber(product))
+            {
+
+#pragma omp critical
+                if (product > greatestProduct)
+                    greatestProduct = product;
+            }
+        }
+    }
+
+    return greatestProduct;
 }
