@@ -13,3 +13,4 @@ int ProblemThree();
 int ProblemFour();
 int ProblemFive();
 int ProblemSix();
+int ProblemSeven();

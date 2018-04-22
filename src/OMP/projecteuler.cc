@@ -135,3 +135,35 @@ int ProblemSix()
     }
     return std::pow(squareOfSum,2) - sumOfSquares;
 }
+int ProblemSeven()
+{
+    int n = 10001;
+    int upperBound = (int) n * std::log(n) + n * std::log(std::log(n));
+    int nthPrime = 0;
+    int numPrimes = 0;
+
+    std::vector<int> sieve(upperBound, 1);
+
+#pragma omp parallel
+#pragma omp for 
+    for (int i = 2; i < upperBound; i++)
+        if (sieve[i])
+            for (int j = i + i; j < upperBound; j += i)
+                sieve[j] = 0;
+
+    for (int i = 2; i < upperBound; i++)
+    {
+        if (sieve[i])
+        {
+            numPrimes++;
+
+            if (numPrimes == n)
+            {
+                nthPrime = i;
+                break;
+            }
+        }
+    }
+
+    return nthPrime;
+}
