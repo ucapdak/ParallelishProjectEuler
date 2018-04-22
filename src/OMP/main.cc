@@ -9,6 +9,7 @@ int main(int argc, char ** argv)
     std::cout << "Problem Five: " << ProblemFive() << std::endl;
     std::cout << "Problem Six: " << ProblemSix() << std::endl;
     std::cout << "Problem Seven: " << ProblemSeven() << std::endl;
+    std::cout << "Problem Eight: " << ProblemEight() << std::endl;
 
     return 1;
 }
