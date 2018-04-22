@@ -82,7 +82,7 @@ int ProblemFour()
     int product = 0;
     int greatestProduct = 0;
 
-#pragma omp parallel
+#pragma omp parallel shared(greatestProduct) private(product)
 #pragma omp for 
     for (int i = 100; i < 1000; i++)
     {
@@ -101,4 +101,8 @@ int ProblemFour()
     }
 
     return greatestProduct;
+}
+int ProblemFive()
+{
+    return std::pow(2,4) * std::pow(3,2) * 5 * 7 * 11 * 13 * 17 * 19;
 }
