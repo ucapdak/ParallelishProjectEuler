@@ -79,23 +79,26 @@ int ProblemThree()
 }
 int ProblemFour()
 {
-    int product = 0;
     int greatestProduct = 0;
 
-#pragma omp parallel shared(greatestProduct) private(product)
-#pragma omp for 
-    for (int i = 100; i < 1000; i++)
+#pragma omp parallel
     {
-        for (int j = i; j < 1000; j++)
-        {
-            product = i * j;
+        int product;
 
-            if (product == ReverseNumber(product))
+#pragma omp for 
+        for (int i = 100; i < 1000; i++)
+        {
+            for (int j = i; j < 1000; j++)
             {
+                product = i * j;
+
+                if (product == ReverseNumber(product))
+                {
 
 #pragma omp critical
-                if (product > greatestProduct)
-                    greatestProduct = product;
+                    if (product > greatestProduct)
+                        greatestProduct = product;
+                }
             }
         }
     }
@@ -105,4 +108,30 @@ int ProblemFour()
 int ProblemFive()
 {
     return std::pow(2,4) * std::pow(3,2) * 5 * 7 * 11 * 13 * 17 * 19;
+}
+int ProblemSix()
+{
+    int sumOfSquares = 0;
+    int squareOfSum = 0;
+
+#pragma omp parallel
+    {
+        int localSumOfSquares = 0;
+        int localSquareOfSum = 0;
+
+#pragma omp for
+        for (int i = 1; i <= 100; i++)
+        {
+            localSumOfSquares += std::pow(i,2);
+            localSquareOfSum += i;
+        }
+
+#pragma omp crticial
+        {
+            sumOfSquares += localSumOfSquares;
+            squareOfSum += localSquareOfSum;
+        }
+
+    }
+    return std::pow(squareOfSum,2) - sumOfSquares;
 }

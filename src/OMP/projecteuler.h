@@ -12,3 +12,4 @@ int ProblemTwo();
 int ProblemThree();
 int ProblemFour();
 int ProblemFive();
+int ProblemSix();
