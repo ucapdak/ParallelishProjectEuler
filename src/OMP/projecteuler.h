@@ -15,3 +15,4 @@ int ProblemFive();
 int ProblemSix();
 int ProblemSeven();
 long ProblemEight();
+long ProblemNine();

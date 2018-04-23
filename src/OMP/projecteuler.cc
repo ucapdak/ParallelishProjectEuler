@@ -204,6 +204,8 @@ long ProblemEight()
     long largestProduct = 0;
     int numDigits = 13;
 
+#pragma omp parallel
+#pragma omp for private(product) 
     for (int i = 0; i <= 1000 - numDigits; i++)
     {
         product = 1;
@@ -213,9 +215,38 @@ long ProblemEight()
             product *= digits[j];
         }
 
+#pragma omp critical
         if (product > largestProduct)
             largestProduct = product; 
     }
 
     return largestProduct;
+}
+long ProblemNine()
+{
+    long m;
+    long n;
+    long a;
+    long b;
+    long c;
+
+    for (m = 1; m <= 500; m++)
+    {
+        if (500 % m == 0)
+        {
+            n = (500/m) - m;
+
+            a = 2 * m * n;
+            b = pow(m,2) - pow(n,2);
+            c = pow(m,2) + pow(n,2);
+
+            if (b < 0)
+                continue;
+
+            if (pow(a,2) + pow(b,2) == pow(c,2))
+                break;
+        }
+    }
+
+    return a * b * c;
 }
